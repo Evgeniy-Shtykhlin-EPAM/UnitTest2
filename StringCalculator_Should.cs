@@ -14,8 +14,18 @@ namespace UnitTest
         [Theory]
         [InlineData("1",1)]
         [InlineData("2", 2)]
+        public void Return_Number_With_One_Number(string numbers, int expected)
+        {
+            var calculator = new StringCalculator();
+            var result = calculator.Add(numbers);
 
-        public void Return_1_When_String_Is_1(string numbers, int expected)
+            Assert.Equal(expected, result);
+        }
+
+        [Theory]
+        [InlineData("1,2", 3)]
+        [InlineData("1,3", 4)]
+        public void Return_Sum_Numbers_With_Two_Numbers(string numbers, int expected)
         {
             var calculator = new StringCalculator();
             var result = calculator.Add(numbers);

@@ -47,8 +47,11 @@ namespace UnitTest
                 return 0;
             }
 
-            return int.Parse(numbers);
+            var result = numbers.Split(',')
+                .Select(x => int.Parse(x))
+                .Sum();
 
+            return result;
         }
     }
 
