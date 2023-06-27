@@ -49,17 +49,31 @@ namespace UnitTest
 
             var delimiters = new List<char> { ',', '\n', ';' };
 
-            var result2 = numbers.Split(delimiters.ToArray());
+            var strs = numbers.Split(delimiters.ToArray());
 
-            var listOfNumbers = new List <int> ();
+            var listOfNumbers = new List <int>();
 
+            bool flag = false;
 
-            foreach (var item in result2)
+            string messageForException="";
+
+            foreach (var item in strs)
             {
                 if (!string.IsNullOrEmpty(item))
                 {
                     listOfNumbers.Add(int.Parse(item));
+
+                    if (int.Parse(item)<0)
+                    {
+                        flag = true;
+                        messageForException += " "+item;
+                    }
                 }
+            }
+
+            if (flag)
+            {
+                throw new Exception("negatives not allowed:"+messageForException);
             }
 
             return listOfNumbers.Sum();

@@ -3,6 +3,7 @@ namespace UnitTest
     public class StringCalculator_Should
     {
         private StringCalculator _stringCalculator=new StringCalculator();
+
         [Fact]
         public void Return_Zero_When_Empty_String()
         {
@@ -57,6 +58,16 @@ namespace UnitTest
             var result = _stringCalculator.Add(numbers);
 
             Assert.Equal(expected, result);
+        }
+
+        [Theory]
+        [InlineData("-1,-2", "negatives not allowed: -1 -2")]
+        public void Return_Throw_Negative_Input(string numbers, string expected)
+        {
+            Action action =()=> _stringCalculator.Add(numbers);
+
+            var ex= Assert.Throws<Exception>(action);
+            Assert.Equal(expected, ex.Message);
         }
     }
 
