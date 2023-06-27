@@ -47,13 +47,22 @@ namespace UnitTest
                 return 0;
             }
 
-            var delimetrs = new char[] {',','\n' };
+            var delimiters = new List<char> { ',', '\n', ';' };
 
-            var result = numbers.Split(delimetrs)
-                .Select(x => int.Parse(x))
-                .Sum();
+            var result2 = numbers.Split(delimiters.ToArray());
 
-            return result;
+            var listOfNumbers = new List <int> ();
+
+
+            foreach (var item in result2)
+            {
+                if (!string.IsNullOrEmpty(item))
+                {
+                    listOfNumbers.Add(int.Parse(item));
+                }
+            }
+
+            return listOfNumbers.Sum();
         }
     }
 
