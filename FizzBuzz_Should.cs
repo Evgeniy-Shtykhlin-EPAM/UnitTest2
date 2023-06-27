@@ -68,5 +68,21 @@ namespace UnitTest
             var ex = Assert.Throws<Exception>(action);
             Assert.Equal(expected, ex.Message);
         }
+
+        [Theory]
+        [InlineData("1", "1")]
+        [InlineData("2", "2")]
+        [InlineData("3", "fizz")]
+        [InlineData("6", "fizz")]
+        [InlineData("10", "buzz")]
+        [InlineData("20", "buzz")]
+        [InlineData("15", "fizzbuzz")]
+        [InlineData("30", "fizzbuzz")]
+        public void Return_As_Expected(string number, string expected)
+        {
+            var result = _fizzBuzz.PrintIfNumberInRange(number);
+
+            Assert.Equal(expected, result);
+        }
     }
 }
