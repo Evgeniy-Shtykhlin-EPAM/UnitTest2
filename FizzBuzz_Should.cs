@@ -24,6 +24,17 @@ namespace UnitTest
             Assert.Equal(expected, result);
         }
 
+
+        [Theory]
+        [InlineData("10", "buzz")]
+        [InlineData("20", "buzz")]
+        public void Return_Buzz(string number, string expected)
+        {
+            var result = _fizzBuzz.Print(number);
+
+            Assert.Equal(expected, result);
+        }
+
         [Theory]
         [InlineData("15", "fizzbuzz")]
         [InlineData("30", "fizzbuzz")]
