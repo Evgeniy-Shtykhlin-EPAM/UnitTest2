@@ -62,7 +62,7 @@ namespace UnitTest
 
         [Theory]
         [InlineData("-1,-2", "negatives not allowed: -1 -2")]
-        public void Return_Throw_Negative_Input(string numbers, string expected)
+        public void Return_Throw_If_Input_Has_Negative_Number_Negative_Input(string numbers, string expected)
         {
             Action action =()=> _stringCalculator.Add(numbers);
 
