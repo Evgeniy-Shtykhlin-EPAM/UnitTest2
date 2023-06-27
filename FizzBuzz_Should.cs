@@ -44,5 +44,17 @@ namespace UnitTest
 
             Assert.Equal(expected, result);
         }
+
+        [Theory]
+        [InlineData("1", true)]
+        [InlineData("100", true)]
+        [InlineData("101", false)]
+        [InlineData("-1", false)]
+        public void Return_IsSingle_Number_Or_Not(string number, bool expected)
+        {
+            var result = _fizzBuzz.IsWithinRange(number);
+
+            Assert.Equal(expected, result);
+        }
     }
 }

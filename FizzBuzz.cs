@@ -53,5 +53,12 @@ namespace UnitTest
             }
             return stringNumber;
         }
+
+        public bool IsWithinRange(string stringNumber)
+        {
+            int number = int.Parse(stringNumber);
+
+            return  number is >= 1 and <= 100;
+        }
     }
 }
