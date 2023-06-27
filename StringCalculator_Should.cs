@@ -13,6 +13,8 @@ namespace UnitTest
 
         [Theory]
         [InlineData("1",1)]
+        [InlineData("2", 2)]
+
         public void Return_1_When_String_Is_1(string numbers, int expected)
         {
             var calculator = new StringCalculator();
