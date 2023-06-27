@@ -40,6 +40,16 @@ namespace UnitTest
 
             Assert.Equal(expected, result);
         }
+
+        [Theory]
+        [InlineData("1\n2,3", 6)]
+        //[InlineData("1,3", 4)]
+        public void Return_Sum_Numbers_With_Two_Numbers_With_New_Lines_In_Input(string numbers, int expected)
+        {
+            var result = _stringCalculator.Add(numbers);
+
+            Assert.Equal(expected, result);
+        }
     }
 
     

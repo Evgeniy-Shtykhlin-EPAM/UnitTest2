@@ -47,7 +47,9 @@ namespace UnitTest
                 return 0;
             }
 
-            var result = numbers.Split(',')
+            var delimetrs = new char[] {',','\n' };
+
+            var result = numbers.Split(delimetrs)
                 .Select(x => int.Parse(x))
                 .Sum();
 
