@@ -48,13 +48,25 @@ namespace UnitTest
         [Theory]
         [InlineData("1", true)]
         [InlineData("100", true)]
+        [InlineData("50", true)]
         [InlineData("101", false)]
         [InlineData("-1", false)]
-        public void Return_IsSingle_Number_Or_Not(string number, bool expected)
+        public void Return_Is_Number_In_Range(string number, bool expected)
         {
             var result = _fizzBuzz.IsWithinRange(number);
 
             Assert.Equal(expected, result);
+        }
+
+        [Theory]
+        [InlineData("-1", "Number is out of range")]
+        [InlineData("-100", "Number is out of range")]
+        public void Return_Throw(string number, string expected)
+        {
+            Action action = () => _fizzBuzz.PrintIfNumberInRange(number);
+
+            var ex = Assert.Throws<Exception>(action);
+            Assert.Equal(expected, ex.Message);
         }
     }
 }

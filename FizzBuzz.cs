@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xunit.Sdk;
 
 namespace UnitTest
 {
@@ -35,7 +36,7 @@ namespace UnitTest
     {
         public string Print(string stringNumber)
         {
-            int number = int.Parse(stringNumber);
+            var number = int.Parse(stringNumber);
 
             if (number % 3 == 0 && number % 5 == 0)
             {
@@ -56,9 +57,19 @@ namespace UnitTest
 
         public bool IsWithinRange(string stringNumber)
         {
-            int number = int.Parse(stringNumber);
+            var number = int.Parse(stringNumber);
 
             return  number is >= 1 and <= 100;
+        }
+
+        public string PrintIfNumberInRange(string stringNumber)
+        {
+            if (!IsWithinRange(stringNumber))
+            {
+                throw new Exception("Number is out of range");
+            }
+
+            return Print(stringNumber);
         }
     }
 }
