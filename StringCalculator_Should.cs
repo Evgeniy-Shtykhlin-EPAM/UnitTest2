@@ -70,6 +70,4 @@ namespace UnitTest
             Assert.Equal(expected, ex.Message);
         }
     }
-
-    
 }
